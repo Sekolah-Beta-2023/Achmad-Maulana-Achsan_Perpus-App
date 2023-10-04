@@ -9,7 +9,7 @@ module.exports = {
     requireConfigFile: false,
   },
   extends: ['@nuxtjs', 'plugin:nuxt/recommended', 'prettier'],
-  plugins: [],
+  plugins: ['unicorn'],
   // add your custom rules here
-  rules: {},
+  rules: { 'unicorn/error-message': 'error' },
 }
