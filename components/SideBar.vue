@@ -96,7 +96,7 @@
               </svg>
             </div>
 
-            <a href="" class="text-base"> Tambah Buku </a>
+            <a href="/tambah-buku" class="text-base"> Tambah Buku </a>
           </div>
         </li>
       </ul>

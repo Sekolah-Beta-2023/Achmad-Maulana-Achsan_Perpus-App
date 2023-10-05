@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white fixed h-16 md:w-1/2 lg:w-3/4 m-5 rounded-xl flex justify-between items-center p-5"
+    class="bg-white fixed h-16 md:w-1/2 lg:w-3/4 m-5 rounded-xl flex justify-between items-center p-5 z-50"
   >
     <div class="font-inter">
       <h2 class="font-bold text-xl text-green-dark">Perpustakaan App</h2>
