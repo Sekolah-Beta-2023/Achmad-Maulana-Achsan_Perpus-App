@@ -73,7 +73,7 @@
                 </defs>
               </svg>
             </div>
-            <a href="" class="text-base"> Buku </a>
+            <a href="/buku" class="text-base"> Buku </a>
           </div>
         </li>
         <li
@@ -118,17 +118,14 @@ export default {
   props: {
     isDashboard: {
       type: Boolean,
-
       default: false,
     },
     isBooks: {
       type: Boolean,
-
       default: false,
     },
     isTambahBuku: {
       type: Boolean,
-
       default: false,
     },
   },
