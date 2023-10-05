@@ -1,21 +1,21 @@
 <template>
   <div
-    class="bg-white fixed h-24 md:w-1/2 lg:w-4/5 m-5 rounded-3xl flex justify-between items-center p-5"
+    class="bg-white fixed h-16 md:w-1/2 lg:w-3/4 m-5 rounded-xl flex justify-between items-center p-5"
   >
     <div class="font-inter">
-      <h2 class="font-bold text-2xl text-green-dark">Perpustakaan App</h2>
-      <p class="text-black-light text-xl">{{ menu }}</p>
+      <h2 class="font-bold text-xl text-green-dark">Perpustakaan App</h2>
+      <p class="text-black-light text-base">{{ menu }}</p>
     </div>
     <div class="flex items-center">
       <div class="text-green-dark text-base">
-        <h3>Hallo</h3>
-        <h3 class="font-bold">John Doe</h3>
+        <h3>Hallo,</h3>
+        <h3 class="font-bold">{{ username }}</h3>
       </div>
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="70"
-          height="70"
+          width="50"
+          height="50"
           viewBox="0 0 70 70"
           fill="none"
         >
@@ -55,6 +55,11 @@ export default {
   name: 'NavBar',
   props: {
     menu: {
+      type: String,
+      required: true,
+      default: '',
+    },
+    username: {
       type: String,
       required: true,
       default: '',

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-96 bg-white h-screen flex flex-col justify-between items-center"
+    class="w-56 bg-white h-screen flex flex-col justify-between items-center"
   >
     <div>
       <div class="w-72 h-20 rounded-2xl flex justify-center items-center">
@@ -23,16 +23,17 @@
           </svg>
         </div>
       </div>
-      <ul class="font-inter text-2xl text-green-dark gap-3 flex flex-col">
+      <ul class="font-inter text-green-dark gap-3 flex items-center flex-col">
         <li
-          class="w-72 h-20 rounded-2xl flex justify-center items-center hover:bg-white hover:shadow-md hover:font-bold"
+          class="w-48 h-12 rounded-xl flex justify-start items-center hover:bg-white hover:shadow-md hover:font-bold"
+          :class="[isDashboard ? 'shadow-md font-bold' : '']"
         >
-          <div class="flex items-center justify-start w-full p-4">
+          <div class="flex items-center p-4">
             <div class="mr-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="27"
-                height="27"
+                width="20"
+                height="20"
                 viewBox="0 0 27 27"
                 fill="none"
               >
@@ -43,18 +44,19 @@
               </svg>
             </div>
 
-            <a href=""> Dashboard </a>
+            <a href="/dashboard" class="text-base"> Dashboard </a>
           </div>
         </li>
         <li
-          class="w-72 h-20 rounded-2xl flex justify-center items-center hover:bg-white hover:shadow-md hover:font-bold"
+          class="w-48 h-12 rounded-xl flex justify-start items-center hover:bg-white hover:shadow-md hover:font-bold"
+          :class="[isBooks ? 'shadow-md font-bold' : '']"
         >
           <div class="flex items-center justify-start p-4 w-full">
             <div class="mr-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
+                width="23"
+                height="23"
                 viewBox="0 0 30 30"
                 fill="none"
               >
@@ -71,18 +73,19 @@
                 </defs>
               </svg>
             </div>
-            <a href=""> Buku </a>
+            <a href="" class="text-base"> Buku </a>
           </div>
         </li>
         <li
-          class="w-72 h-20 rounded-2xl flex justify-center items-center hover:bg-white hover:shadow-md hover:font-bold"
+          class="w-48 h-12 rounded-xl flex justify-start items-center hover:bg-white hover:shadow-md hover:font-bold"
+          :class="[isTambahBuku ? 'shadow-md font-bold' : '']"
         >
           <div class="flex w-full justify-start items-center p-4">
             <div class="mr-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
+                width="23"
+                height="23"
                 viewBox="0 0 30 30"
                 fill="none"
               >
@@ -93,14 +96,14 @@
               </svg>
             </div>
 
-            <a href=""> Tambah Buku </a>
+            <a href="" class="text-base"> Tambah Buku </a>
           </div>
         </li>
       </ul>
     </div>
     <div class="mb-12 flex justify-center items-center">
       <button
-        class="rounded-sm w-56 h-14 bg-orange-light text-black-light font-semibold"
+        class="rounded-sm w-40 h-12 bg-orange-light text-black-light font-semibold text-sm"
       >
         Logout
       </button>
@@ -110,5 +113,22 @@
 <script>
 export default {
   name: 'SideBar',
+  props: {
+    isDashboard: {
+      type: Boolean,
+
+      default: false,
+    },
+    isBooks: {
+      type: Boolean,
+
+      default: false,
+    },
+    isTambahBuku: {
+      type: Boolean,
+
+      default: false,
+    },
+  },
 }
 </script>
