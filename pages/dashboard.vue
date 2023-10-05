@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
-import SideBar from '~/components/SideBar.vue';
+
 <template>
   <div class="flex">
-    <SideBar isDashboard="isDashboard" />
+    <SideBar :isDashboard="isDashboard" />
     <div class="bg-green-light w-full h-screen overflow-auto">
       <div class="flex justify-center w-full">
         <NavBar menu="Dashboard" username="John Doe" />
@@ -39,6 +39,10 @@ export default {
     SideBar,
     NavBar,
   },
-  isDashboard: true,
+  data() {
+    return {
+      isDashboard: true,
+    }
+  },
 }
 </script>
