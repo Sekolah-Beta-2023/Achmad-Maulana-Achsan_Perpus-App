@@ -102,11 +102,13 @@
       </ul>
     </div>
     <div class="mb-12 flex justify-center items-center">
-      <button
-        class="rounded-sm w-40 h-12 bg-orange-light text-black-light font-semibold text-sm"
-      >
-        Logout
-      </button>
+      <nuxt-link to="/">
+        <button
+          class="rounded-sm w-40 h-12 bg-orange-light text-black-light font-semibold text-sm"
+        >
+          Logout
+        </button>
+      </nuxt-link>
     </div>
   </div>
 </template>

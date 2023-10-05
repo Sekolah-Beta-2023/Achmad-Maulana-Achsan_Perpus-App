@@ -18,7 +18,7 @@ import SideBar from '~/components/SideBar.vue';
           </p>
         </div>
         <div class="w-full flex justify-center items-center mb-6">
-          <nuxt-link to="/">
+          <nuxt-link to="/buku">
             <img
               width="600px"
               src="../assets/dashboardimage.svg"
