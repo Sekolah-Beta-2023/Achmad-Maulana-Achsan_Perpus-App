@@ -19,9 +19,11 @@
             perpustakaan. Mengapa memilih Perpus App?
           </p>
           <div class="flex w-full items-center justify-start">
-            <button class="mr-5 w-60 h-12 bg-green-dark text-white">
-              Daftar 🚀
-            </button>
+            <nuxt-link to="/daftar">
+              <button class="mr-5 w-60 h-12 bg-green-dark text-white">
+                Daftar 🚀
+              </button>
+            </nuxt-link>
             <div class="w-60">
               <p class="text-base text-black-light">
                 Disini anda bisa mendaftar Sebagai Admin
@@ -141,9 +143,11 @@
           pengelolaan koleksi, interaksi yang lebih baik dengan pengguna, dan
           pertumbuhan komunitas yang berarti.
         </p>
-        <button class="mr-5 w-60 h-12 bg-green-dark font-inter text-white">
-          Daftar 🚀
-        </button>
+        <nuxt-link to="/daftar">
+          <button class="mr-5 w-60 h-12 bg-green-dark font-inter text-white">
+            Daftar 🚀
+          </button>
+        </nuxt-link>
       </div>
     </section>
     <!-- Akir Hubungi Kami -->
