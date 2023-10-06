@@ -6,6 +6,23 @@
       <div class="flex justify-center w-full">
         <NavBar menu="Tambah Buku" username="John Doe" />
       </div>
+      <!-- Awal input Search -->
+      <div class="w-2/4 z-50 top-5 items-end flex justify-end fixed">
+        <form class="w-1/3 flex items-end h-full gap-1">
+          <InputComponent
+            id="search"
+            label=" "
+            name="search"
+            placeholder="Search"
+            type="text"
+          />
+          <button class="flex items-end mb-2">
+            <img src="../assets/icon-search.svg" alt="icon-search" />
+          </button>
+        </form>
+      </div>
+      <!-- AKhir input Search -->
+
       <div class="w-full p-16">
         <div class="w-full h-full mt-10">
           <div v-if="!isCreating" class="w-full flex justify-end">
