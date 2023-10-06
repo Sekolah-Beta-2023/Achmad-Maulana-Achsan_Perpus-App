@@ -7,7 +7,7 @@
       {{ user.status ? 'meminjam' : 'tidak meminjam' }}
     </td>
     <td class="border-green-dark border-2 text-center">
-      <button class="w-7 h-7 rounded border-green-dark border-2">
+      <button class="w-7 h-7 rounded border-green-dark border-2" @click="click">
         <img src="../assets/icon-edit.svg" alt="icon-edit" />
       </button>
       <button class="w-7 h-7 rounded border-red-600 border-2">
@@ -33,6 +33,10 @@ export default {
     no: {
       type: Number,
       default: 1,
+    },
+    click: {
+      type: Function,
+      default: () => {},
     },
   },
 }
