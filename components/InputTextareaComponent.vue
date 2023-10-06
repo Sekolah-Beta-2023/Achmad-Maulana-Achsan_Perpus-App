@@ -8,6 +8,7 @@
     <div class="mt-2 rounded-md shadow-sm">
       <textarea
         :id="id"
+        :value="value"
         :name="name"
         :cols="cols"
         :rows="rows"
@@ -44,6 +45,10 @@ export default {
     rows: {
       type: Number,
       default: 4,
+    },
+    value: {
+      type: String,
+      default: '',
     },
   },
 }
