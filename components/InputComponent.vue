@@ -8,6 +8,7 @@
     <div class="relative mt-2 rounded-md shadow-sm">
       <input
         :id="id"
+        :value="value"
         :type="type"
         name="email"
         class="block font-inter w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-green-dark ring-1 ring-inset ring-green-dark placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-dark sm:text-sm sm:leading-6"
@@ -19,6 +20,7 @@
 <script>
 export default {
   name: 'InputComponent',
+
   props: {
     label: {
       type: String,
@@ -39,6 +41,10 @@ export default {
     name: {
       type: String,
       default: 'name',
+    },
+    value: {
+      type: String,
+      default: '',
     },
   },
 }

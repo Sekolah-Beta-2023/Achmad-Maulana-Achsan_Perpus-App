@@ -51,6 +51,65 @@
             </div>
           </form>
         </div>
+        <!-- Edit User -->
+        <div
+          v-if="!isEdit"
+          class="mt-2 w-full flex justify-center items-center"
+        >
+          <form class="bg-white shadow-xl w-1/3 pt-4 rounded-lg">
+            <div class="flex justify-center items-center gap-4">
+              <div>
+                <InputComponent
+                  id="username"
+                  label="Username"
+                  name="username"
+                  type="text"
+                  placeholder="Username"
+                  :value="users[0].username"
+                />
+                <InputComponent
+                  id="email"
+                  label="Email"
+                  name="email"
+                  type="email"
+                  placeholder="johndoe@gmail.com"
+                  :value="users[0].email"
+                />
+                <div class="w-full mt-2">
+                  <label
+                    class="block font-inter text-sm font-medium leading-6 text-green-dark"
+                    for="status"
+                    >Status</label
+                  >
+                  <select
+                    id="status"
+                    :value="users[0].status"
+                    name="status"
+                    class="block font-inter w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-green-dark ring-1 ring-inset ring-green-dark focus:ring-2 focus:ring-inset focus:ring-green-dark sm:text-sm sm:leading-6 h-9"
+                  >
+                    <option :value="true">Pinjam</option>
+                    <option :value="false">Tidak Pinjam</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="flex w-full justify-center my-4 gap-5">
+              <button
+                class="w-1/3 bg-red-500 text-base font-bold h-12 shadow-lg rounded-md text-white"
+                @click="isEdit = !isEdit"
+              >
+                Batal
+              </button>
+              <button
+                type="submit"
+                class="bg-green-dark w-1/3 text-base font-bold h-12 shadow-lg rounded-md text-white"
+              >
+                Simpan
+              </button>
+            </div>
+          </form>
+        </div>
+        <!-- Akhir Edit User -->
         <table class="table-auto w-full mt-10">
           <thead
             class="bg-green-dark w-full h-12 text-white font-inter text-base font-semibold"
@@ -69,6 +128,7 @@
               :key="user.id"
               :user="user"
               :no="i + 1"
+              :click="() => (isEdit = !isEdit)"
             />
           </tbody>
         </table>
@@ -89,6 +149,7 @@ export default {
     return {
       isPengguna: true,
       isCreating: false,
+      isEdit: false,
       users: [
         {
           id: 1,
