@@ -1,4 +1,3 @@
-import HeaderLandingPage from '~/components/HeaderLandingPage.vue';
 <template>
   <div class="bg-green-light h-screen">
     <HeaderLandingPage />
@@ -67,7 +66,11 @@ import HeaderLandingPage from '~/components/HeaderLandingPage.vue';
                 Masuk
               </button>
             </div>
-            <!-- Akhir Password -->
+            <div class="w-full mt-4">
+              <p class="text-sm text-center text-green-dark font-inter">
+                Belum punya akun? <a href="/daftar" class="font-bold">Daftar</a>
+              </p>
+            </div>
           </form>
         </div>
       </div>
