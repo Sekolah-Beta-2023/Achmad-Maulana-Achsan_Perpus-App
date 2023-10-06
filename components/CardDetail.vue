@@ -46,8 +46,8 @@
             Hapus
           </button>
           <button
-            type="submit"
             class="bg-green-dark w-48 text-base font-bold h-12 shadow-lg rounded-md text-white"
+            @click="click"
           >
             Edit
           </button>
@@ -65,6 +65,10 @@ export default {
   props: {
     buku: {
       type: Object,
+      default: () => {},
+    },
+    click: {
+      type: Function,
       default: () => {},
     },
   },

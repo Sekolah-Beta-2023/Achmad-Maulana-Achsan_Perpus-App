@@ -10,7 +10,7 @@
         <div class="w-full h-full mt-10">
           <div v-if="!isCreating" class="w-full flex justify-end">
             <button
-              class="bg-green-dark w-48 text-base font-bold h-12 text-white shadow-lg fixed rounded-md"
+              class="bg-green-dark w-48 text-base font-bold h-12 text-white shadow-lg fixed rounded-md z-40"
               @click="isCreating = !isCreating"
             >
               + Tambah Buku
@@ -18,6 +18,11 @@
           </div>
           <div v-else class="mt-2 w-full flex justify-center items-center">
             <form class="bg-white shadow-xl w-10/12 pt-4 rounded-lg">
+              <div class="flex w-full justify-center items-center">
+                <h1 class="text-green-dark font-inter font-bold text-xl">
+                  Tambah Buku Baru
+                </h1>
+              </div>
               <div class="flex justify-center items-center gap-4">
                 <div>
                   <InputTextareaComponent
@@ -93,15 +98,114 @@
                   type="submit"
                   class="bg-green-dark w-48 text-base font-bold h-12 shadow-lg rounded-md text-white"
                 >
+                  Buat
+                </button>
+              </div>
+            </form>
+          </div>
+          <!-- Edit Books -->
+          <div
+            v-if="isEdit"
+            class="mt-2 w-full flex justify-center items-center"
+          >
+            <form class="bg-white shadow-xl w-10/12 pt-4 rounded-lg">
+              <div class="flex w-full justify-center items-center">
+                <h1 class="text-green-dark font-inter font-bold text-xl">
+                  Edit Buku
+                </h1>
+              </div>
+              <div class="flex justify-center items-center gap-4">
+                <div>
+                  <InputTextareaComponent
+                    id="judul"
+                    label="Judul Buku"
+                    placeholder="Judul Buku"
+                    name="judul"
+                    cols="30"
+                    rows="4"
+                    :value="buku.judul"
+                  />
+                  <InputComponent
+                    id="penulis"
+                    label="Penulis"
+                    name="penulis"
+                    type="text"
+                    placeholder="Penulis"
+                    :value="buku.penulis"
+                  />
+                  <InputComponent
+                    id="penerbit"
+                    label="Penerbit"
+                    name="penerbit"
+                    type="text"
+                    placeholder="Penerbit"
+                    :value="buku.penerbit"
+                  />
+                  <InputComponent
+                    id="kota"
+                    label="Kota Terbit"
+                    name="kota"
+                    type="text"
+                    placeholder="Kota Terbit"
+                    :value="buku.kota"
+                  />
+                </div>
+                <div>
+                  <InputComponent
+                    id="tahun"
+                    label="Tahun Terbit"
+                    name="tahun"
+                    type="number"
+                    placeholder="2022"
+                    :value="buku.tahun"
+                  />
+                  <InputComponent
+                    id="isbn"
+                    label="ISBN"
+                    name="isbn"
+                    type="number"
+                    placeholder="123442324"
+                    :value="buku.isbn"
+                  />
+                  <InputTextareaComponent
+                    id="deskripsi"
+                    label="Deskripsi"
+                    placeholder="Deskripsi"
+                    name="deskripsi"
+                    cols="30"
+                    rows="4"
+                    :value="buku.deskripsi"
+                  />
+                  <InputComponent
+                    id="upload"
+                    label="Upload Foto Sampul Buku"
+                    name="upload"
+                    type="file"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+              <div class="flex w-full justify-center my-4 gap-5">
+                <button
+                  class="bg-red-500 w-48 text-base font-bold h-12 shadow-lg rounded-md text-white"
+                  @click="isEdit = !isEdit"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  class="bg-green-dark w-48 text-base font-bold h-12 shadow-lg rounded-md text-white"
+                >
                   Simpan
                 </button>
               </div>
             </form>
           </div>
+          <!-- Akhir Edit Books -->
         </div>
         <div class="flex flex-col gap-4 mt-14">
-          <CardDetail :buku="buku" />
-          <CardDetail :buku="buku" />
+          <CardDetail :buku="buku" :click="() => (isEdit = !isEdit)" />
+          <CardDetail :buku="buku" :click="() => (isEdit = !isEdit)" />
         </div>
       </div>
     </div>
@@ -126,12 +230,14 @@ export default {
     return {
       isTambahBuku: true,
       isCreating: false,
+      isEdit: false,
       buku: {
         urlImage:
           'https://th.bing.com/th/id/OIP.Kj03Qz6N55oaupU7v4TenwHaJ_?pid=ImgDet&rs=1',
         judul: 'Etika Rambu-rambu kehidupan',
         penulis: 'Hiro Tigiman',
         penerbit: 'Kanisius',
+        kota: 'Yogyakarta',
         tahun: 2022,
         isbn: 9789792134247,
         deskripsi:

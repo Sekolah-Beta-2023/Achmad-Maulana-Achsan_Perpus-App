@@ -17,6 +17,11 @@
         </div>
         <div v-else class="mt-2 w-full flex justify-center items-center">
           <form class="bg-white shadow-xl w-1/3 pt-4 rounded-lg">
+            <div class="flex w-full justify-center items-center">
+              <h1 class="text-green-dark font-inter font-bold text-xl">
+                Tambah Pengguna Baru
+              </h1>
+            </div>
             <div class="flex justify-center items-center gap-4">
               <div>
                 <InputComponent
@@ -52,11 +57,13 @@
           </form>
         </div>
         <!-- Edit User -->
-        <div
-          v-if="!isEdit"
-          class="mt-2 w-full flex justify-center items-center"
-        >
+        <div v-if="isEdit" class="mt-2 w-full flex justify-center items-center">
           <form class="bg-white shadow-xl w-1/3 pt-4 rounded-lg">
+            <div class="flex w-full justify-center items-center">
+              <h1 class="text-green-dark font-inter font-bold text-xl">
+                Edit Pengguna
+              </h1>
+            </div>
             <div class="flex justify-center items-center gap-4">
               <div>
                 <InputComponent

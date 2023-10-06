@@ -6,7 +6,7 @@
       <div class="flex justify-center w-full">
         <NavBar menu="Buku" username="JohnDoe" />
       </div>
-      <div class="flex flex-wrap justify-between p-5 gap-3">
+      <div class="flex flex-wrap justify-center p-5 gap-3">
         <CardBook
           image="https://penerbitdeepublish.com/wp-content/uploads/2020/11/Buku-Perspektif-Pendidikan-dalam-Bingkai_Kurniawan-Convert-depan.jpg"
         />
