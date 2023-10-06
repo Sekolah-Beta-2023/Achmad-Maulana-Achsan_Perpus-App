@@ -6,11 +6,11 @@
       <div class="flex justify-center w-full">
         <NavBar menu="Tambah Buku" username="John Doe" />
       </div>
-      <div class="w-full h-screen p-16">
-        <div class="w-full h-full mt-12">
+      <div class="w-full p-16">
+        <div class="w-full h-full mt-10">
           <div v-if="!isCreating" class="w-full flex justify-end">
             <button
-              class="bg-green-dark w-48 text-base font-bold h-12 text-white shadow-lg rounded-md"
+              class="bg-green-dark w-48 text-base font-bold h-12 text-white shadow-lg fixed rounded-md"
               @click="isCreating = !isCreating"
             >
               + Tambah Buku
@@ -99,6 +99,10 @@
             </form>
           </div>
         </div>
+        <div class="flex flex-col gap-4 mt-14">
+          <CardDetail :buku="buku" />
+          <CardDetail :buku="buku" />
+        </div>
       </div>
     </div>
   </div>
@@ -108,13 +112,31 @@ import InputComponent from '~/components/InputComponent.vue'
 import NavBar from '~/components/NavBar.vue'
 import SideBar from '~/components/SideBar.vue'
 import InputTextareaComponent from '@/components/InputTextareaComponent.vue'
+import CardDetail from '~/components/CardDetail.vue'
 
 export default {
-  components: { SideBar, NavBar, InputComponent, InputTextareaComponent },
+  components: {
+    SideBar,
+    NavBar,
+    InputComponent,
+    InputTextareaComponent,
+    CardDetail,
+  },
   data() {
     return {
       isTambahBuku: true,
       isCreating: false,
+      buku: {
+        urlImage:
+          'https://th.bing.com/th/id/OIP.Kj03Qz6N55oaupU7v4TenwHaJ_?pid=ImgDet&rs=1',
+        judul: 'Etika Rambu-rambu kehidupan',
+        penulis: 'Hiro Tigiman',
+        penerbit: 'Kanisius',
+        tahun: 2022,
+        isbn: 9789792134247,
+        deskripsi:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, eius quam quos consectetur earum architecto soluta minima similique error sunt debitis ea quisquam animi assumenda. Harum, mollitia? Officiis, dolor ullam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam ipsa at, minima molestias tempora repellendus labore incidunt, laudantium qui, quas expedita deserunt natus. Deleniti animi corporis architecto harum odit non!. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum illum nam doloremque hic qui est voluptatibus laborum nobis, corporis officia minus sint odit natus incidunt a eum! Aliquam, vitae fugit!',
+      },
     }
   },
 }
