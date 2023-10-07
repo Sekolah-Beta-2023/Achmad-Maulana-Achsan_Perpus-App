@@ -9,7 +9,7 @@
     <div class="flex items-center">
       <div class="text-green-dark text-base">
         <h3>Hallo,</h3>
-        <h3 class="font-bold">{{ username }}</h3>
+        <h3 class="font-bold">{{ nama }}</h3>
       </div>
       <div>
         <svg
@@ -59,7 +59,7 @@ export default {
       required: true,
       default: '',
     },
-    username: {
+    nama: {
       type: String,
       required: true,
       default: '',

@@ -4,7 +4,7 @@
     <SideBar :isPengguna="isPengguna" />
     <div class="bg-green-light w-full h-screen overflow-auto">
       <div class="flex justify-center w-full">
-        <NavBar menu="Pengguna" username="JohnDoe" />
+        <NavBar menu="Pengguna" nama="JohnDoe" />
       </div>
       <!-- Awal input Search -->
       <div class="w-2/4 z-50 top-6 items-end flex justify-end fixed">
@@ -31,8 +31,13 @@
             + Tambah Pengguna
           </button>
         </div>
+        <!-- Tambah user -->
         <div v-else class="mt-2 w-full flex justify-center items-center">
-          <form class="bg-white shadow-xl w-1/3 pt-4 rounded-lg">
+          <form
+            class="bg-white shadow-xl w-1/3 pt-4 rounded-lg"
+            method="post"
+            @submit.prevent="addUser"
+          >
             <div class="flex w-full justify-center items-center">
               <h1 class="text-green-dark font-inter font-bold text-xl">
                 Tambah Pengguna Baru
@@ -42,6 +47,7 @@
               <div>
                 <InputComponent
                   id="username"
+                  v-model.trim="newUsers.username"
                   label="Username"
                   name="username"
                   type="text"
@@ -49,6 +55,7 @@
                 />
                 <InputComponent
                   id="email"
+                  v-model.trim="newUsers.email"
                   label="Email"
                   name="email"
                   type="email"
@@ -72,6 +79,7 @@
             </div>
           </form>
         </div>
+        <!-- Akhir tambah user -->
         <!-- Edit User -->
         <div v-if="isEdit" class="mt-2 w-full flex justify-center items-center">
           <form class="bg-white shadow-xl w-1/3 pt-4 rounded-lg">
@@ -173,33 +181,49 @@ export default {
       isPengguna: true,
       isCreating: false,
       isEdit: false,
-      users: [
-        {
-          id: 1,
-          username: 'Human',
-          email: 'Email',
-          status: false,
-        },
-        {
-          id: 2,
-          username: 'Wolha',
-          email: 'haihi',
-          status: true,
-        },
-        {
-          id: 2,
-          username: 'Wolha',
-          email: 'haihi',
-          status: true,
-        },
-        {
-          id: 2,
-          username: 'Wolha',
-          email: 'haihi',
-          status: true,
-        },
-      ],
+      users: [],
+      newUsers: {
+        username: '',
+        email: '',
+      },
     }
+  },
+  mounted() {
+    this.getUsers()
+  },
+  created() {
+    console.log(this.newUsers)
+  },
+  methods: {
+    // menampilkan para pengguna
+    async getUsers() {
+      try {
+        const response = await this.$axios.get('users')
+        this.users = response.data
+      } catch (e) {
+        this.error = e.response.data.message
+      }
+    },
+    // menambah user
+    async addUser() {
+      try {
+        console.log('newUser', this.newUsers)
+        await this.$axios.post('users', {
+          username: this.newUsers.username,
+          email: this.newUsers.email,
+          status: false,
+        })
+        // setelah berhasil menambahkan
+        this.username = ''
+        this.email = ''
+        // memperbarui daftar pengguna
+        await this.getUsers()
+        // menyembunykan formulir tambah pengguna
+        this.isCreating = false
+      } catch (e) {
+        this.error = e.response.data.message
+      }
+    },
   },
 }
 </script>
