@@ -1,9 +1,10 @@
+<!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <div class="bg-white p-5 shadow-lg rounded-lg">
-    <div class="flex gap-7">
-      <CardBook :image="buku.urlImage" />
+    <div class="flex gap-7 w-full">
+      <CardBook :image="buku.image" :judul="buku.judul" :bookId="buku.id" />
       <div
-        class="text-green-dark text-base font-inter flex flex-col justify-between"
+        class="text-green-dark text-base w-full font-inter flex flex-col justify-between"
       >
         <div class="">
           <tr>
@@ -20,6 +21,11 @@
             <td class="font-bold">Penerbit</td>
             <td class="font-bold block mr-3">:</td>
             <td class="ml-2">{{ buku.penerbit }}</td>
+          </tr>
+          <tr>
+            <td class="font-bold">Kota</td>
+            <td class="font-bold block mr-3">:</td>
+            <td class="ml-2">{{ buku.kota }}</td>
           </tr>
           <tr>
             <td class="font-bold">Tahun</td>
@@ -42,6 +48,7 @@
         <div class="flex w-full justify-end my-4 gap-5">
           <button
             class="bg-red-500 w-48 text-base font-bold h-12 shadow-lg rounded-md text-white"
+            @click="deleteBook"
           >
             Hapus
           </button>
@@ -69,7 +76,11 @@ export default {
     },
     click: {
       type: Function,
-      default: () => {},
+      required: true,
+    },
+    deleteBook: {
+      type: Function,
+      required: true,
     },
   },
 }

@@ -33,6 +33,7 @@
               <div class="relative mt-2 rounded-md shadow-sm">
                 <input
                   id="email"
+                  v-model="admin.email"
                   type="email"
                   name="email"
                   class="block font-inter w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-green-dark ring-1 ring-inset ring-green-dark placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-dark sm:text-sm sm:leading-6"
@@ -51,6 +52,7 @@
               <div class="relative mt-2 rounded-md shadow-sm">
                 <input
                   id="password"
+                  v-model="admin.password"
                   type="password"
                   name="password"
                   class="block font-inter w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-green-dark ring-1 ring-inset ring-green-dark placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-dark sm:text-sm sm:leading-6"
@@ -78,13 +80,57 @@
   </div>
 </template>
 <script>
+import Swal from 'sweetalert2'
 import HeaderLandingPage from '~/components/HeaderLandingPage.vue'
 
 export default {
   components: { HeaderLandingPage },
+
+  data() {
+    return {
+      loading: false,
+      admin: {
+        email: '',
+        password: '',
+      },
+      adminLogin: [],
+    }
+  },
+
   methods: {
-    login() {
-      this.$router.push('/dashboard')
+    async login() {
+      try {
+        this.loading = true
+        const response = await this.$axios.post(
+          '/auth/v1/token?grant_type=password',
+          {
+            email: this.admin.email,
+            password: this.admin.password,
+          }
+        )
+
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Kamu Berhasil Masuk',
+          showConfirmButton: false,
+          timer: 1500,
+        })
+        window.localStorage.setItem('token', response.data.access_token)
+        window.localStorage.setItem('email', response.data.user.email)
+        window.location.replace('/dashboard')
+      } catch (e) {
+        this.error = e.response.data.message
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'email atau password salah!',
+        })
+      } finally {
+        // Save token and email to local storage
+
+        this.loading = false
+      }
     },
   },
 }

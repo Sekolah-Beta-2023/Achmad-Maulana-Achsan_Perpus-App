@@ -37,6 +37,7 @@ export default {
 
     // google font
     '@nuxtjs/google-fonts',
+    'nuxt-sweetalert2',
   ],
 
   googleFonts: {
@@ -49,7 +50,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: 'https://mzjeafajapudsfpztxcy.supabase.co/rest/v1/',
+    baseURL: 'https://mzjeafajapudsfpztxcy.supabase.co/',
     headers: {
       apikey:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im16amVhZmFqYXB1ZHNmcHp0eGN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTY2MDU1NjQsImV4cCI6MjAxMjE4MTU2NH0.bY__Q9LhzVdl7JF6jhNfHWLy-FBprSAnRZPAbyCCBdA',

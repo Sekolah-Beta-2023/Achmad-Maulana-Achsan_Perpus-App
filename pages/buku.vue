@@ -4,13 +4,14 @@
     <SideBar :isBooks="isBook" />
     <div class="bg-green-light w-full h-screen overflow-auto">
       <div class="flex justify-center w-full">
-        <NavBar menu="Buku" username="JohnDoe" />
+        <NavBar menu="Buku" nama="JohnDoe" />
       </div>
       <!-- Awal input Search -->
       <div class="w-2/4 z-50 top-5 items-end flex justify-end fixed">
         <form class="w-1/3 flex items-end h-full gap-1">
           <InputComponent
             id="search"
+            v-model="searchQuery"
             label=" "
             name="search"
             placeholder="Search"
@@ -22,11 +23,26 @@
         </form>
       </div>
       <!-- AKhir input Search -->
-      <div class="flex flex-wrap justify-center p-5 gap-3">
+      <div v-if="loading">
+        <LoadingComponent />
+      </div>
+      <div
+        v-else-if="resultQuery.length !== 0"
+        class="flex flex-wrap justify-center p-5 gap-3 mt-20"
+      >
         <CardBook
-          image="https://penerbitdeepublish.com/wp-content/uploads/2020/11/Buku-Perspektif-Pendidikan-dalam-Bingkai_Kurniawan-Convert-depan.jpg"
+          v-for="(book, i) in resultQuery"
+          :key="i"
+          :image="book.image"
+          :judul="book.judul"
+          :bookId="book.id"
         />
-        <CardBook />
+      </div>
+      <div
+        v-else
+        class="h-full text-green-dark text-lg p-5 items-start mt-20 text-center pt-20 font-inter w-full flex justify-center"
+      >
+        <p>Data Tidak ditemukan</p>
       </div>
     </div>
   </div>
@@ -36,13 +52,55 @@ import CardBook from '~/components/CardBook.vue'
 import SideBar from '@/components/SideBar.vue'
 import NavBar from '~/components/NavBar.vue'
 import InputComponent from '~/components/InputComponent.vue'
+import LoadingComponent from '~/components/LoadingComponent.vue'
 
 export default {
-  components: { CardBook, SideBar, NavBar, InputComponent },
+  components: { CardBook, SideBar, NavBar, InputComponent, LoadingComponent },
   data() {
     return {
       isBook: true,
+      books: [],
+      searchQuery: '',
+      loading: false,
     }
+  },
+
+  computed: {
+    // fitur search
+    resultQuery() {
+      if (this.searchQuery) {
+        return this.books.filter((book) => {
+          return this.searchQuery
+            .toLowerCase()
+            .split(' ')
+            .every((v) => book.judul.toLowerCase().includes(v))
+        })
+      } else {
+        return this.books
+      }
+    },
+  },
+
+  mounted() {
+    this.admin = localStorage.getItem('token')
+    if (!this.admin) {
+      window.location.replace('/masuk')
+    }
+    // mounting getBooks
+    this.getBooks()
+  },
+  methods: {
+    async getBooks() {
+      this.loading = true
+      try {
+        const response = await this.$axios.get('rest/v1/books')
+        this.books = response.data
+      } catch (e) {
+        this.error = e.response.data.message
+      } finally {
+        this.loading = false
+      }
+    },
   },
 }
 </script>
