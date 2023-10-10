@@ -5,7 +5,7 @@
     <SideBar :isDashboard="isDashboard" />
     <div class="bg-green-light w-full h-screen overflow-auto">
       <div class="flex justify-center w-full">
-        <NavBar menu="Dashboard" username="John Doe" />
+        <NavBar menu="Dashboard" nama="John Doe" />
       </div>
       <div class="flex flex-col justify-around items-center h-full">
         <div class="mt-36">
@@ -42,6 +42,13 @@ export default {
   data() {
     return {
       isDashboard: true,
+      admin: '',
+    }
+  },
+  mounted() {
+    this.admin = localStorage.getItem('token')
+    if (!this.admin) {
+      window.location.replace('/masuk')
     }
   },
 }

@@ -73,17 +73,18 @@
       </ul>
     </div>
     <div class="mb-12 flex justify-center items-center">
-      <nuxt-link to="/">
+      <div @click="logout">
         <button
           class="rounded-sm w-40 h-12 bg-orange-light text-black-light font-semibold text-sm"
         >
           Logout
         </button>
-      </nuxt-link>
+      </div>
     </div>
   </div>
 </template>
 <script>
+import Swal from 'sweetalert2'
 export default {
   name: 'SideBar',
   props: {
@@ -102,6 +103,20 @@ export default {
     isPengguna: {
       type: Boolean,
       default: false,
+    },
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem('email')
+      localStorage.removeItem('token')
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Berhasil di Logout',
+        showConfirmButton: false,
+        timer: 1500,
+      })
+      window.location.replace('/')
     },
   },
 }

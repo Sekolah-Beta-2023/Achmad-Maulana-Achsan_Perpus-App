@@ -1,7 +1,10 @@
 <template>
   <div class="bg-green-light h-screen">
     <HeaderLandingPage />
-    <div class="h-full w-full px-72 pb-16 pt-[100px]">
+    <div v-if="loading" class="h-full w-full">
+      <LoadingComponent />
+    </div>
+    <div v-else class="h-full w-full px-72 pb-16 pt-[100px]">
       <div class="w-full h-full t flex justify-between items-center gap-5">
         <div class="flex flex-col justify-between w-full h-full">
           <img
@@ -23,20 +26,14 @@
         <div
           class="bg-white w-full h-full rounded-r-xl flex justify-center items-center"
         >
-          <form method="post" class="w-4/5" @submit.prevent="daftar">
+          <form class="w-4/5" @submit.prevent="daftarAkun">
             <h1 class="text-green-dark font-bold font-inter text-3xl">
               Welcome!
             </h1>
-            <!-- username -->
-            <InputComponent
-              id="username"
-              label="Username"
-              placeholder="Username"
-              type="text"
-            />
             <!--email-->
             <InputComponent
               id="email"
+              v-model="admin.email"
               label="Email"
               placeholder="Email"
               type="email"
@@ -45,6 +42,7 @@
             <!-- Awal Password -->
             <InputComponent
               id="password"
+              v-model="admin.password"
               label="Password"
               placeholder="Password"
               type="password"
@@ -69,14 +67,59 @@
   </div>
 </template>
 <script>
+import Swal from 'sweetalert2'
 import HeaderLandingPage from '~/components/HeaderLandingPage.vue'
 import InputComponent from '~/components/InputComponent.vue'
+import LoadingComponent from '~/components/LoadingComponent.vue'
 
 export default {
-  components: { HeaderLandingPage, InputComponent },
+  components: { HeaderLandingPage, InputComponent, LoadingComponent },
+
+  data() {
+    return {
+      loading: false,
+      admin: {
+        email: '',
+        password: '',
+      },
+    }
+  },
   methods: {
-    daftar() {
-      this.$router.push('/masuk')
+    // daftar Admin
+
+    async daftarAkun() {
+      if (this.admin.password.length < 6) {
+        return Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Kata sandi harus memiliki setidaknya 6 karakter',
+        })
+      }
+
+      try {
+        this.loading = true
+        await this.$axios.post('auth/v1/signup', {
+          email: this.admin.email,
+          password: this.admin.password,
+        })
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Berhasil Membuat Akun',
+          showConfirmButton: false,
+          timer: 1500,
+        })
+      } catch (e) {
+        this.error = e.response.data.message
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: this.error,
+        })
+      } finally {
+        this.loading = false
+        this.$router.push('/masuk')
+      }
     },
   },
 }

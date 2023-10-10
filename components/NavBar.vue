@@ -9,7 +9,7 @@
     <div class="flex items-center">
       <div class="text-green-dark text-base">
         <h3>Hallo,</h3>
-        <h3 class="font-bold">{{ username }}</h3>
+        <h3 class="font-bold">{{ admin }}</h3>
       </div>
       <div>
         <svg
@@ -53,17 +53,27 @@
 <script>
 export default {
   name: 'NavBar',
+
   props: {
     menu: {
       type: String,
       required: true,
       default: '',
     },
-    username: {
+    nama: {
       type: String,
       required: true,
       default: '',
     },
+  },
+
+  data() {
+    return {
+      admin: '',
+    }
+  },
+  mounted() {
+    this.admin = localStorage.getItem('email')
   },
 }
 </script>

@@ -10,7 +10,10 @@
       <button class="w-7 h-7 rounded border-green-dark border-2" @click="click">
         <img src="../assets/icon-edit.svg" alt="icon-edit" />
       </button>
-      <button class="w-7 h-7 rounded border-red-600 border-2">
+      <button
+        class="w-7 h-7 rounded border-red-600 border-2"
+        @click="deleteUser"
+      >
         <img src="../assets/icon-delete.svg" alt="icon-delete" />
       </button>
     </td>
@@ -37,6 +40,10 @@ export default {
     click: {
       type: Function,
       default: () => {},
+    },
+    deleteUser: {
+      type: Function,
+      required: true,
     },
   },
 }
