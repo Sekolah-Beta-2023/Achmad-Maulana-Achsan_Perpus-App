@@ -59,7 +59,7 @@ export default {
     },
   },
 
-  // PWA module configuration: https://go.nuxtjs.dev/pwa
+  // PWA module configuration: https://go.nuxtjs.dev/pwa aa
   pwa: {
     manifest: {
       lang: 'en',
