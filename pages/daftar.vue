@@ -7,11 +7,13 @@
     <div v-else class="h-full w-full px-72 pb-16 pt-[100px]">
       <div class="w-full h-full t flex justify-between items-center gap-5">
         <div class="flex flex-col justify-between w-full h-full">
-          <img
-            width="107px"
-            src="../assets/perpus-app-hijau.svg"
-            alt="perpus-app-hijau"
-          />
+          <nuxt-link to="/">
+            <img
+              width="107px"
+              src="../assets/perpus-app-hijau.svg"
+              alt="perpus-app-hijau"
+            />
+          </nuxt-link>
           <div class="h-full flex flex-col justify-center items-center">
             <img
               width="600"
