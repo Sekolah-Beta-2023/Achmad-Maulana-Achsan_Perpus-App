@@ -61,8 +61,8 @@
                     label="Judul Buku"
                     placeholder="Judul Buku"
                     name="judul"
-                    cols="30"
-                    rows="4"
+                    :cols="30"
+                    :rows="4"
                   />
                   <InputComponent
                     id="penulis"
@@ -112,8 +112,8 @@
                     label="Deskripsi"
                     placeholder="Deskripsi"
                     name="deskripsi"
-                    cols="30"
-                    rows="4"
+                    :cols="30"
+                    :rows="4"
                   />
                   <!-- upload image -->
                   <div class="mt-2">
@@ -175,8 +175,8 @@
                     label="Judul Buku"
                     placeholder="Judul Buku"
                     name="judul"
-                    cols="30"
-                    rows="4"
+                    :cols="30"
+                    :rows="4"
                     :modelValue="edit.judul"
                   />
                   <InputComponent
@@ -232,8 +232,8 @@
                     label="Deskripsi"
                     placeholder="Deskripsi"
                     name="deskripsi"
-                    cols="30"
-                    rows="4"
+                    :cols="30"
+                    :rows="4"
                     :modelValue="edit.deskripsi"
                   />
                   <!-- Input Upload -->
@@ -274,7 +274,7 @@
           </div>
           <!-- Akhir Edit Books -->
         </div>
-        <div v-if="loading">
+        <div v-if="loading" class="w-full h-full">
           <LoadingComponent />
         </div>
         <div
@@ -379,7 +379,7 @@ export default {
         const response = await this.$axios.get('rest/v1/books')
         this.books = response.data
       } catch (e) {
-        this.error = e.response.data.message
+        this.error = e.response.data.msg
       } finally {
         this.loading = false
       }
@@ -410,7 +410,7 @@ export default {
           tahun: this.newBook.tahun,
           isbn: this.newBook.isbn,
           deskripsi: this.newBook.deskripsi,
-          image: `https://mzjeafajapudsfpztxcy.supabase.co/storage/v1/object/public/${this.newBook.image}`,
+          image: this.newBook.image,
         })
         Swal.fire({
           position: 'center',
@@ -462,24 +462,27 @@ export default {
     // // Edit image
     async handleFileEdit(event) {
       const file = event.target.files[0]
+      if (file) {
+        try {
+          const formData = new FormData()
+          formData.append('image', file)
 
-      try {
-        const formData = new FormData()
-        formData.append('image', file)
-        const uniqueString = new Date().getTime().toString()
+          const response = await this.$axios.put(
+            `/storage/v1/object/${this.edit.image}`,
+            formData,
+            {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              },
+            }
+          )
 
-        const response = await this.$axios.post(
-          `/storage/v1/object/images/${uniqueString}`,
-          formData,
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          }
-        )
-        this.newEdit.image = response.data.Key.toString()
-      } catch (e) {
-        this.error = e.response.data.message
+          this.newEdit.image = response.data.Key
+        } catch (e) {
+          this.error = e.response.data.msg
+        }
+      } else {
+        return (this.newEdit.image = this.edit.image)
       }
     },
 
@@ -534,7 +537,7 @@ export default {
           tahun: this.newEdit.tahun,
           isbn: this.newEdit.isbn,
           deskripsi: this.newEdit.deskripsi,
-          image: `https://mzjeafajapudsfpztxcy.supabase.co/storage/v1/object/public/${this.newEdit.image}`,
+          image: this.newEdit.image,
         })
         Swal.fire({
           position: 'center',
@@ -545,6 +548,7 @@ export default {
         })
         await this.getBooks()
         this.isEdit = false
+        window.location.replace('/tambah-buku')
         this.newEdit.judul = ''
         this.newEdit.penulis = ''
         this.newEdit.penerbit = ''
@@ -554,7 +558,7 @@ export default {
         this.newEdit.deskripsi = ''
         this.newEdit.image = ''
       } catch (e) {
-        this.error = e.response.data.message
+        this.error = e.response.data.msg
       }
     },
   },

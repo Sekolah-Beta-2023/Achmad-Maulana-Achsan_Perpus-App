@@ -23,7 +23,7 @@
         </form>
       </div>
       <!-- AKhir input Search -->
-      <div v-if="loading">
+      <div v-if="loading" class="w-full h-full">
         <LoadingComponent />
       </div>
       <div

@@ -11,7 +11,10 @@
               alt="perpus-app-hijau"
             />
           </nuxt-link>
-          <div class="h-full flex flex-col justify-center items-center">
+          <div v-if="loading" class="h-full w-full">
+            <LoadingComponent />
+          </div>
+          <div v-else class="h-full flex flex-col justify-center items-center">
             <img src="../assets/image-masuk.svg" alt="image-masuk" />
             <h1 class="font-bold text-4xl text-green-dark text-center">
               Masuk
@@ -84,9 +87,10 @@
 <script>
 import Swal from 'sweetalert2'
 import HeaderLandingPage from '~/components/HeaderLandingPage.vue'
+import LoadingComponent from '~/components/LoadingComponent.vue'
 
 export default {
-  components: { HeaderLandingPage },
+  components: { HeaderLandingPage, LoadingComponent },
 
   data() {
     return {
@@ -122,11 +126,15 @@ export default {
         window.localStorage.setItem('email', response.data.user.email)
         window.location.replace('/dashboard')
       } catch (e) {
-        this.error = e.response.data.message
+        this.error = e.response.data.error
+        if (this.error === 'invalid_grant') {
+          this.error = 'Email atau Password salah'
+        }
+
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'email atau password salah!',
+          text: this.error,
         })
       } finally {
         // Save token and email to local storage
