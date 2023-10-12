@@ -5,7 +5,7 @@
     <button class="w-52 h-72 mb-1" @click="$router.push('/detail/' + bookId)">
       <img
         class="rounded-xl object-cover w-full h-72"
-        :src="image"
+        :src="`https://mzjeafajapudsfpztxcy.supabase.co/storage/v1/object/public/${image}`"
         :alt="image"
       />
     </button>
@@ -22,8 +22,7 @@ export default {
   props: {
     image: {
       type: String,
-      default:
-        'https://th.bing.com/th/id/OIP.Kj03Qz6N55oaupU7v4TenwHaJ_?pid=ImgDet&rs=1',
+      default: '',
     },
     judul: {
       type: String,

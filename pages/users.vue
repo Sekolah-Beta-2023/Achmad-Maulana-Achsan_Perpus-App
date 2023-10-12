@@ -35,8 +35,8 @@
         <!-- Tambah user -->
         <div v-else class="mt-2 w-full flex justify-center items-center">
           <form
-            class="bg-white shadow-xl w-1/3 pt-4 rounded-lg"
             method="post"
+            class="bg-white shadow-xl w-1/3 pt-4 rounded-lg"
             @submit.prevent="addUser"
           >
             <div class="flex w-full justify-center items-center">
@@ -65,12 +65,12 @@
               </div>
             </div>
             <div class="flex w-full justify-center my-4 gap-5">
-              <button
-                class="w-1/3 bg-red-500 text-base font-bold h-12 shadow-lg rounded-md text-white"
+              <div
+                class="w-1/3 bg-red-500 text-base font-bold h-12 shadow-lg rounded-md text-white text-center items-center flex justify-center"
                 @click="isCreating = !isCreating"
               >
                 Batal
-              </button>
+              </div>
               <button
                 type="submit"
                 class="bg-green-dark w-1/3 text-base font-bold h-12 shadow-lg rounded-md text-white"

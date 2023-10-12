@@ -1,10 +1,8 @@
 <template>
   <div class="bg-green-light h-screen">
     <HeaderLandingPage />
-    <div v-if="loading" class="h-full w-full">
-      <LoadingComponent />
-    </div>
-    <div v-else class="h-full w-full px-72 pb-16 pt-[100px]">
+
+    <div class="h-full w-full px-72 pb-16 pt-[100px]">
       <div class="w-full h-full t flex justify-between items-center gap-5">
         <div class="flex flex-col justify-between w-full h-full">
           <nuxt-link to="/">
@@ -14,7 +12,10 @@
               alt="perpus-app-hijau"
             />
           </nuxt-link>
-          <div class="h-full flex flex-col justify-center items-center">
+          <div v-if="loading" class="h-full w-full">
+            <LoadingComponent />
+          </div>
+          <div v-else class="h-full flex flex-col justify-center items-center">
             <img
               width="600"
               src="../assets/image-daftar-1.svg"
@@ -111,8 +112,9 @@ export default {
           showConfirmButton: false,
           timer: 1500,
         })
+        this.$router.push('/masuk')
       } catch (e) {
-        this.error = e.response.data.message
+        this.error = e.response.data.msg
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -120,7 +122,6 @@ export default {
         })
       } finally {
         this.loading = false
-        this.$router.push('/masuk')
       }
     },
   },
