@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <div class="flex">
-    <SideBar class="md:block hidden" :isBooks="isBook" />
+    <SideBar class="lg:flex md:flex hidden" :isBooks="isBook" />
     <div class="bg-green-light w-full h-screen overflow-auto">
       <div class="flex justify-center w-full lg:mt-0 md:mt-0 mt-5">
         <NavBar menu="Buku" nama="JohnDoe" />
@@ -138,7 +138,7 @@
       </div>
       <div class="w-full flex items-center justify-start px-20">
         <button
-          class="bg-green-dark w-48 text-base font-bold h-12 shadow-lg rounded-md text-white"
+          class="bg-green-dark w-32 md:w-48 text-base font-bold h-12 shadow-lg rounded-md text-white"
           @click="back"
         >
           Kembali

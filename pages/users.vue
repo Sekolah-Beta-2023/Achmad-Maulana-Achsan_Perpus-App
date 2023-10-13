@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <div class="flex">
-    <SideBar class="lg:block md:block hidden" :isPengguna="isPengguna" />
+    <SideBar class="lg:flex md:flex hidden" :isPengguna="isPengguna" />
     <div class="bg-green-light w-full h-screen overflow-auto">
       <div class="flex lg:mt-0 md:mt-0 mt-5 justify-center w-full">
         <NavBar menu="Pengguna" nama="JohnDoe" />

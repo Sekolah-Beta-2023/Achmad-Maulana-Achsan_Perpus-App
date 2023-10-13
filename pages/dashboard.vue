@@ -2,7 +2,7 @@
 
 <template>
   <div class="flex">
-    <SideBar class="lg:block md:block hidden" :isDashboard="isDashboard" />
+    <SideBar class="lg:flex md:flex hidden" :isDashboard="isDashboard" />
     <div
       class="bg-green-light w-full h-screen lg:overflow-auto md:overflow-auto lg:p-0 md:p-0 overflow-auto"
     >

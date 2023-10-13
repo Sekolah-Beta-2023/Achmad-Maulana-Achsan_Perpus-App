@@ -15,7 +15,10 @@
         <h3 class="text-xs text-right md:text-base lg:text-base">Hallo,</h3>
         <h3 class="font-bold md:text-base lg:text-base text-xs">{{ admin }}</h3>
       </div>
-      <div class="md:w-12 lg:w-12 md:h-12 lg:h-12 w-8 h-8">
+      <button
+        class="md:w-12 lg:w-12 md:h-12 lg:h-12 w-8 h-8 focus:outline-none"
+        @click="toggleDropdown"
+      >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" fill="none">
           <path
             fill-rule="evenodd"
@@ -44,11 +47,28 @@
             fill="#00899D"
           />
         </svg>
+      </button>
+      <!-- dropdown -->
+      <div
+        v-if="showDropdown"
+        class="absolute right-0 mt-2 bg-white border border-gray-300 rounded shadow-lg"
+      >
+        <ul>
+          <li>
+            <a
+              class="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              @click="logout"
+              >Logout</a
+            >
+          </li>
+          <!-- Opsi dropdown lainnya jika diperlukan -->
+        </ul>
       </div>
     </div>
   </div>
 </template>
 <script>
+import Swal from 'sweetalert2'
 export default {
   name: 'NavBar',
 
@@ -68,10 +88,33 @@ export default {
   data() {
     return {
       admin: '',
+      showDropdown: false,
     }
   },
   mounted() {
     this.admin = localStorage.getItem('email')
+  },
+  methods: {
+    toggleDropdown() {
+      this.showDropdown = !this.showDropdown
+    },
+    logout() {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'Kamu ingin Logout!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, logout',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.removeItem('email')
+          localStorage.removeItem('token')
+          window.location.replace('/')
+        }
+      })
+    },
   },
 }
 </script>
