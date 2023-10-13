@@ -1,4 +1,61 @@
-# perpus-app
+# Perpustakaan App Project
+
+![Perpustakaan App Logo](/assets/perpus-app-hijau.svg)
+
+## Latar Belakang
+
+Perpustakaan App adalah aplikasi peminjaman dan pengembalian buku yang saya kembangkan sebagai Software Engineer. Dalam proyek ini, fokus utama saya adalah mengembangkan fitur-fitur CRUD (Create, Read, Update, Delete) dari sisi Admin.
+
+## Fitur Prioritas (MVP)
+
+1. **Admin CRUD Buku:**
+
+   - Admin dapat membuat, melihat, memperbarui, dan menghapus data buku.
+
+2. **Sistem Otentikasi Admin:**
+
+   - Admin yang telah mendaftar dapat melakukan login untuk mengakses sistem.
+
+3. **Tampilan Daftar Buku:**
+
+   - Admin dapat melihat daftar buku yang tersedia.
+
+4. **Detail Buku:**
+
+   - Admin dapat melihat detail lengkap dari setiap buku.
+
+5. **Admin CRUD Pengguna:**
+
+   - Admin dapat membuat, melihat, memperbarui, dan menghapus data pengguna.
+
+6. **Pencarian Buku dan Pengguna:**
+   - Admin dapat melakukan pencarian buku dan pengguna untuk mempermudah manajemen.
+
+## Teknologi yang Digunakan
+
+- **Framework Frontend:** Nuxt.js
+- **HTTP Client:** Axios
+- **CSS Framework:** Tailwind CSS
+- **Database:** Supabase
+- **Editor Kode:** Visual Studio Code (VSCode)
+- **Pesan Notifikasi:** SweetAlert2
+
+## Tools dan Software Pendukung
+
+- **Version Control:** Git, GitHub
+- **Desain UI/UX:** Figma
+
+## Link Deploy
+
+Aplikasi Perpustakaan App dapat diakses secara langsung melalui tautan berikut: [Link Deploy](https://perpus-app.netlify.app)
+
+## Desain UI/UX
+
+Desain antarmuka pengguna (UI/UX) Perpustakaan App telah dirancang menggunakan Figma. Anda dapat melihat desainnya pada tautan berikut: [Link Desain Figma](https://www.figma.com/file/qYsDibylT9xhYKrToZERyQ/Perpustakaan-App?type=design&node-id=2%3A31&mode=dev)
+
+---
+
+Dengan fitur-fitur yang tercantum di atas, Perpustakaan App siap digunakan sebagai MVP dan memberikan pengalaman pengguna yang optimal. Jangan ragu untuk berkontribusi atau memberikan umpan balik untuk proyek ini!
 
 ## Build Setup
 
