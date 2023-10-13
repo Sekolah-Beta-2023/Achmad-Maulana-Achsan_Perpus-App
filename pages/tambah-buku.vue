@@ -1,13 +1,15 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <div class="flex">
-    <SideBar :isTambahBuku="isTambahBuku" />
+    <SideBar class="lg:block md:block hidden" :isTambahBuku="isTambahBuku" />
     <div class="bg-green-light w-full h-screen overflow-auto">
-      <div class="flex justify-center w-full">
+      <div class="flex lg:mt-0 md:mt-0 mt-5 justify-center w-full">
         <NavBar menu="Tambah Buku" nama="John Doe" />
       </div>
       <!-- Awal input Search -->
-      <div class="w-2/4 z-50 top-5 items-end flex justify-end fixed">
+      <div
+        class="w-2/4 z-50 top-5 items-end lg:flex md:flex hidden justify-end fixed"
+      >
         <form class="w-1/3 flex items-end h-full gap-1">
           <InputComponent
             id="search"
@@ -24,19 +26,19 @@
       </div>
       <!-- AKhir input Search -->
 
-      <div class="w-full p-16">
+      <div class="w-full md:p-16 md:py-0 md:px-0 py-8 px-6">
         <div
           :class="`w-full h-full mt-10 ${
-            isEdit ? 'fixed bg-blend-color-burn  left-28' : ''
+            isEdit ? 'md:fixed bg-blend-color-burn  left-28' : ''
           }`"
         >
           <div
             v-if="!isCreating"
-            class="w-full flex justify-end"
+            class="md:w-full flex justify-end md:p-16"
             :class="isEdit ? 'hidden' : ''"
           >
             <button
-              class="bg-green-dark w-48 text-base font-bold h-12 text-white shadow-lg fixed rounded-md z-40"
+              class="bg-green-dark md:w-48 w-36 md:text-base text-sm md:font-bold h-12 text-white shadow-lg fixed rounded-md z-40"
               @click="isCreating = !isCreating"
             >
               + Tambah Buku
@@ -45,7 +47,7 @@
           <!-- Awal Add Books -->
           <div v-else class="mt-2 w-full flex justify-center items-center">
             <form
-              class="bg-white shadow-xl w-10/12 p-4 rounded-lg"
+              class="bg-white shadow-xl md:w-10/12 p-4 w-full rounded-lg"
               @submit.prevent="addBook"
             >
               <div class="flex w-full justify-center items-center">
@@ -159,7 +161,7 @@
           >
             <form
               method="post"
-              class="bg-white shadow-xl w-10/12 p-4 rounded-lg"
+              class="bg-white shadow-xl md:w-10/12 w-full p-4 rounded-lg"
               @submit.prevent="() => submitEdit(edit.id)"
             >
               <div class="flex w-full justify-center items-center">
@@ -279,7 +281,7 @@
         </div>
         <div
           v-else-if="resultQuery.length !== 0"
-          class="flex flex-col gap-4 mt-14"
+          class="flex flex-col md:p-16 gap-4 mt-14"
         >
           <CardDetail
             v-for="(book, i) in resultQuery"
@@ -297,6 +299,10 @@
         </div>
       </div>
     </div>
+    <!-- Bottom Bar -->
+    <div class="lg:hidden md:hidden fixed bottom-0 right-0 left-0">
+      <BottomBar :isTambahBuku="isTambahBuku" />
+    </div>
   </div>
 </template>
 <script>
@@ -307,6 +313,7 @@ import SideBar from '~/components/SideBar.vue'
 import InputTextareaComponent from '@/components/InputTextareaComponent.vue'
 import CardDetail from '~/components/CardDetail.vue'
 import LoadingComponent from '~/components/LoadingComponent.vue'
+import BottomBar from '~/components/BottomBar.vue'
 
 export default {
   components: {
@@ -316,6 +323,7 @@ export default {
     InputTextareaComponent,
     CardDetail,
     LoadingComponent,
+    BottomBar,
   },
   data() {
     return {

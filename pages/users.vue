@@ -1,13 +1,15 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <div class="flex">
-    <SideBar :isPengguna="isPengguna" />
+    <SideBar class="lg:block md:block hidden" :isPengguna="isPengguna" />
     <div class="bg-green-light w-full h-screen overflow-auto">
-      <div class="flex justify-center w-full">
+      <div class="flex lg:mt-0 md:mt-0 mt-5 justify-center w-full">
         <NavBar menu="Pengguna" nama="JohnDoe" />
       </div>
       <!-- Awal input Search -->
-      <div class="w-2/4 z-50 top-6 items-end flex justify-end fixed">
+      <div
+        class="w-2/4 z-50 top-6 items-end lg:flex md:flex hidden justify-end fixed"
+      >
         <form class="w-1/3 flex items-end h-full gap-1">
           <InputComponent
             id="search"
@@ -23,10 +25,14 @@
         </form>
       </div>
       <!-- AKhir input Search -->
-      <div class="mt-20 w-full flex justify-start items-start flex-col p-8">
-        <div v-if="!isCreating" class="w-full flex justify-end items-center">
+      <div class="mt-20 w-full flex justify-start items-start flex-col md:p-8">
+        <div
+          v-if="!isCreating"
+          class="w-full flex justify-end items-center md:mt-0 mt-4 md:pr-0 pr-6"
+          :class="isEdit ? 'hidden' : ''"
+        >
           <button
-            class="bg-green-dark w-48 text-base font-bold h-12 text-white shadow-lg fixed rounded-md"
+            class="bg-green-dark md:w-48 w-36 md:text-base text-sm md:font-bold h-12 text-white shadow-lg fixed rounded-md"
             @click="isCreating = !isCreating"
           >
             + Tambah Pengguna
@@ -36,7 +42,7 @@
         <div v-else class="mt-2 w-full flex justify-center items-center">
           <form
             method="post"
-            class="bg-white shadow-xl w-1/3 pt-4 rounded-lg"
+            class="bg-white shadow-xl md:w-1/3 w-full md:pt-4 p-3 rounded-lg"
             @submit.prevent="addUser"
           >
             <div class="flex w-full justify-center items-center">
@@ -82,10 +88,10 @@
         </div>
         <!-- Akhir tambah user -->
         <!-- Edit User -->
-        <div v-if="isEdit" class="mt-2 w-full flex justify-center items-center">
+        <div v-if="isEdit" class="mt-2 flex justify-center items-center">
           <form
             method="post"
-            class="bg-white shadow-xl w-1/3 pt-4 rounded-lg"
+            class="bg-white shadow-xl md:w-1/3 w-full md:pt-4 p-3 rounded-lg"
             @submit.prevent="() => submitEdit(edit.id)"
           >
             <div class="flex w-full justify-center items-center">
@@ -159,10 +165,10 @@
           class="table-auto w-full mt-10"
         >
           <thead
-            class="bg-green-dark w-full h-12 text-white font-inter text-base font-semibold"
+            class="bg-green-dark w-full h-12 text-white font-inter md:text-base text-sm md:font-semibold"
           >
             <tr class="w-full border-white border-solid border-2">
-              <th class="w-12 border-2">No</th>
+              <th class="md:w-12 border-2">No</th>
               <th class="border-2">Username</th>
               <th class="border-2">Email</th>
               <th class="border-2">Status</th>
@@ -188,6 +194,10 @@
         </div>
       </div>
     </div>
+    <!-- Bottom Bar -->
+    <div class="lg:hidden md:hidden fixed bottom-0 right-0 left-0">
+      <BottomBar :isPengguna="isPengguna" />
+    </div>
   </div>
 </template>
 <script>
@@ -197,9 +207,17 @@ import CardUser from '~/components/CardUser.vue'
 import NavBar from '~/components/NavBar.vue'
 import InputComponent from '~/components/InputComponent.vue'
 import LoadingComponent from '~/components/LoadingComponent.vue'
+import BottomBar from '~/components/BottomBar.vue'
 
 export default {
-  components: { SideBar, NavBar, CardUser, InputComponent, LoadingComponent },
+  components: {
+    SideBar,
+    NavBar,
+    CardUser,
+    InputComponent,
+    LoadingComponent,
+    BottomBar,
+  },
 
   data() {
     return {

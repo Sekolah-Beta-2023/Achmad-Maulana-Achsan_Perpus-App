@@ -1,9 +1,9 @@
 <template>
   <div>
     <nav
-      class="w-full h-20 flex justify-between items-center bg-white px-28 fixed top-0 overflow-auto shadow-md"
+      class="w-full lg:h-20 md:h-20 h-16 flex justify-between items-center bg-white lg:px-28 md:px-20 px-5 fixed top-0 overflow-auto shadow-md"
     >
-      <nuxt-link class="mt-3" to="/">
+      <nuxt-link class="lg:mt-3 md:mt-2 mt-1" to="/">
         <img src="../assets/perpus-app-hijau.svg" alt="" />
       </nuxt-link>
       <ul class="flex">
