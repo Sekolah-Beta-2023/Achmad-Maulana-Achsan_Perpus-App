@@ -1,9 +1,9 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <div class="flex">
-    <SideBar :isBooks="isBook" />
+    <SideBar class="md:block hidden" :isBooks="isBook" />
     <div class="bg-green-light w-full h-screen overflow-auto">
-      <div class="flex justify-center w-full">
+      <div class="flex justify-center w-full lg:mt-0 md:mt-0 mt-5">
         <NavBar menu="Buku" nama="JohnDoe" />
       </div>
       <!-- Awal edit Books -->
@@ -125,7 +125,7 @@
       </div>
       <!-- Akhir Add Books -->
 
-      <div class="flex flex-wrap justify-center p-5 gap-3 mt-20">
+      <div class="flex w-full flex-wrap justify-center p-5 gap-3 mt-20">
         <CardDetail
           v-if="books.id"
           :buku="books"
@@ -145,6 +145,10 @@
         </button>
       </div>
     </div>
+    <!-- Bottom Bar -->
+    <div class="lg:hidden md:hidden fixed bottom-0 right-0 left-0">
+      <BottomBar :isBooks="isBook" />
+    </div>
   </div>
 </template>
 <script>
@@ -155,6 +159,7 @@ import CardDetail from '../../components/CardDetail.vue'
 import LoadingComponent from '~/components/LoadingComponent.vue'
 import InputTextareaComponent from '~/components/InputTextareaComponent.vue'
 import InputComponent from '~/components/InputComponent.vue'
+import BottomBar from '~/components/BottomBar.vue'
 
 export default {
   components: {
@@ -164,6 +169,7 @@ export default {
     LoadingComponent,
     InputTextareaComponent,
     InputComponent,
+    BottomBar,
   },
 
   data() {

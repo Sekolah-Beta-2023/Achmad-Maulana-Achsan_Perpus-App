@@ -1,10 +1,14 @@
 <template>
-  <div class="bg-green-light h-screen">
+  <div class="bg-green-light w-full h-screen">
     <HeaderLandingPage />
 
-    <div class="h-full w-full px-72 pb-16 pt-[100px]">
-      <div class="w-full h-full t flex justify-between items-center gap-5">
-        <div class="flex flex-col justify-between w-full h-full">
+    <div
+      class="lg:h-full md:h-full w-full lg:px-72 pb-16 pt-[100px] md:pb-16 p-5"
+    >
+      <div
+        class="w-full h-full md:flex lg:flex justify-between items-center md:gap-5"
+      >
+        <div class="flex flex-col md:justify-between lg:w-full w-full h-full">
           <nuxt-link to="/">
             <img
               width="107px"
@@ -17,20 +21,25 @@
           </div>
           <div v-else class="h-full flex flex-col justify-center items-center">
             <img
+              class="w-72"
               width="600"
               src="../assets/image-daftar-1.svg"
               alt="image-masuk"
             />
-            <h1 class="font-bold text-4xl text-green-dark text-center">
+            <h1
+              class="font-bold lg:text-4xl md:text-4xl text-3xl text-green-dark text-center"
+            >
               Daftar
             </h1>
           </div>
         </div>
         <div
-          class="bg-white w-full h-full rounded-r-xl flex justify-center items-center"
+          class="mt-5 py-5 lg:mt-0 md:mt-0 bg-white w-full h-full lg:rounded-r-xl md:rounded-r-xl md:rounded-none lg:rounded-none rounded-xl flex justify-center items-center"
         >
           <form class="w-4/5" @submit.prevent="daftarAkun">
-            <h1 class="text-green-dark font-bold font-inter text-3xl">
+            <h1
+              class="text-green-dark font-bold font-inter lg:text-3xl md:text-3xl text-2xl"
+            >
               Welcome!
             </h1>
             <!--email-->

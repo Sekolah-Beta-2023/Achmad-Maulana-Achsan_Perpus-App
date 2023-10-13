@@ -1,8 +1,8 @@
 <template>
   <tr class="w-full border-green-dark border-solid border-2 h-12">
     <td class="w-12 border-green-dark border-2 text-center">{{ no }}</td>
-    <td class="border-green-dark border-2 px-3">{{ user.username }}</td>
-    <td class="border-green-dark border-2 px-3">{{ user.email }}</td>
+    <td class="border-green-dark border-2 md:px-3">{{ user.username }}</td>
+    <td class="border-green-dark border-2 md:px-3">{{ user.email }}</td>
     <td class="border-green-dark border-2 text-center">
       {{ user.status ? 'meminjam' : 'tidak meminjam' }}
     </td>

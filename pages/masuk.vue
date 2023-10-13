@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-green-light h-screen">
+  <div class="bg-green-light lg:h-screen md:h-screen h-screen">
     <HeaderLandingPage />
-    <div class="h-full w-full px-72 pb-16 pt-[100px]">
-      <div class="w-full h-full t flex justify-between items-center">
+    <div class="lg:h-full md:h-full w-full lg:px-72 p-5 pb-16 pt-[100px]">
+      <div class="w-full h-full lg:flex md:flex justify-between items-center">
         <div class="flex flex-col justify-between w-full h-full">
           <nuxt-link to="/">
             <img
@@ -15,17 +15,25 @@
             <LoadingComponent />
           </div>
           <div v-else class="h-full flex flex-col justify-center items-center">
-            <img src="../assets/image-masuk.svg" alt="image-masuk" />
-            <h1 class="font-bold text-4xl text-green-dark text-center">
+            <img
+              class="w-72 lg:w-full md:w-full"
+              src="../assets/image-masuk.svg"
+              alt="image-masuk"
+            />
+            <h1
+              class="font-bold lg:text-4xl md:text-4xl text-3xl font-inter text-green-dark text-center"
+            >
               Masuk
             </h1>
           </div>
         </div>
         <div
-          class="bg-white w-full h-full rounded-r-xl flex justify-center items-center"
+          class="bg-white w-full h-full lg:rounded-r-xl md:rounded-r-xl rounded-lg lg:rounded-none md:rounded-none flex justify-center items-center lg:mt-0 md:mt-0 mt-5 py-5"
         >
           <form method="post" class="w-4/5" @submit.prevent="login">
-            <h1 class="text-green-dark font-bold font-inter text-3xl">
+            <h1
+              class="text-green-dark font-bold font-inter lg:text-3xl md:text-3xl text-2xl"
+            >
               Welcome back!
             </h1>
             <!--email-->

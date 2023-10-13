@@ -1,13 +1,15 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <div class="flex">
-    <SideBar :isBooks="isBook" />
+    <SideBar class="lg:block md:block hidden" :isBooks="isBook" />
     <div class="bg-green-light w-full h-screen overflow-auto">
-      <div class="flex justify-center w-full">
+      <div class="flex justify-center w-full lg:mt-0 md:mt-0 mt-3">
         <NavBar menu="Buku" nama="JohnDoe" />
       </div>
       <!-- Awal input Search -->
-      <div class="w-2/4 z-50 top-5 items-end flex justify-end fixed">
+      <div
+        class="w-2/4 z-50 top-5 items-end justify-end fixed md:flex lg:flex hidden"
+      >
         <form class="w-1/3 flex items-end h-full gap-1">
           <InputComponent
             id="search"
@@ -45,6 +47,10 @@
         <p>Data Tidak ditemukan</p>
       </div>
     </div>
+    <!-- Bottom Bar -->
+    <div class="lg:hidden md:hidden fixed bottom-0 right-0 left-0">
+      <BottomBar :isBooks="isBook" />
+    </div>
   </div>
 </template>
 <script>
@@ -53,9 +59,17 @@ import SideBar from '@/components/SideBar.vue'
 import NavBar from '~/components/NavBar.vue'
 import InputComponent from '~/components/InputComponent.vue'
 import LoadingComponent from '~/components/LoadingComponent.vue'
+import BottomBar from '~/components/BottomBar.vue'
 
 export default {
-  components: { CardBook, SideBar, NavBar, InputComponent, LoadingComponent },
+  components: {
+    CardBook,
+    SideBar,
+    NavBar,
+    InputComponent,
+    LoadingComponent,
+    BottomBar,
+  },
   data() {
     return {
       isBook: true,

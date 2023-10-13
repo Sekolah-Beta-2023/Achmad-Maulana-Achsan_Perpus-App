@@ -1,10 +1,13 @@
 <template>
   <div
-    class="bg-white shadow-md rounded-2xl w-60 h-96 flex flex-col items-center p-3"
+    class="bg-white shadow-md rounded-2xl lg:w-60 md:w-48 w-36 h-auto md:h-96 flex flex-col items-center p-3"
   >
-    <button class="w-52 h-72 mb-1" @click="$router.push('/detail/' + bookId)">
+    <button
+      class="md:w-52 md:h-72 mb-1"
+      @click="$router.push('/detail/' + bookId)"
+    >
       <img
-        class="rounded-xl object-cover w-full h-72"
+        class="rounded-xl object-cover md:w-full md:h-72"
         :src="`https://mzjeafajapudsfpztxcy.supabase.co/storage/v1/object/public/${image}`"
         :alt="image"
       />

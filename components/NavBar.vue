@@ -1,24 +1,22 @@
 <template>
   <div
-    class="bg-white fixed h-16 md:w-1/2 lg:w-3/4 m-5 rounded-xl flex justify-between items-center p-5 z-50"
+    class="bg-white fixed h-16 md:w-1/2 lg:w-3/4 md:m-5 rounded-xl flex justify-between items-center p-5 z-50"
   >
     <div class="font-inter">
-      <h2 class="font-bold text-xl text-green-dark">Perpustakaan App</h2>
-      <p class="text-black-light text-base">{{ menu }}</p>
+      <h2 class="font-bold lg:text-xl md:text-xl text-base text-green-dark">
+        Perpustakaan App
+      </h2>
+      <p class="text-black-light lg:text-base md:text-base text-sm">
+        {{ menu }}
+      </p>
     </div>
     <div class="flex items-center">
-      <div class="text-green-dark text-base">
-        <h3>Hallo,</h3>
-        <h3 class="font-bold">{{ admin }}</h3>
+      <div class="text-green-dark">
+        <h3 class="text-xs text-right md:text-base lg:text-base">Hallo,</h3>
+        <h3 class="font-bold md:text-base lg:text-base text-xs">{{ admin }}</h3>
       </div>
-      <div>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="50"
-          height="50"
-          viewBox="0 0 70 70"
-          fill="none"
-        >
+      <div class="md:w-12 lg:w-12 md:h-12 lg:h-12 w-8 h-8">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" fill="none">
           <path
             fill-rule="evenodd"
             clip-rule="evenodd"

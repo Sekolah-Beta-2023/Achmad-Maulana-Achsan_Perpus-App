@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
-  <div class="bg-white p-5 shadow-lg rounded-lg">
-    <div class="flex gap-7 w-full">
+  <div class="bg-white md:p-5 p-2 shadow-lg rounded-lg">
+    <div class="flex md:gap-7 w-full">
       <CardBook :image="buku.image" :judul="buku.judul" :bookId="buku.id" />
       <div
         class="text-green-dark text-base w-full font-inter flex flex-col justify-between"
@@ -45,15 +45,15 @@
             </td>
           </tr>
         </div>
-        <div class="flex w-full justify-end my-4 gap-5">
+        <div class="flex w-full justify-end md:my-4 my-2 md:gap-5 gap-2">
           <button
-            class="bg-red-500 w-48 text-base font-bold h-12 shadow-lg rounded-md text-white"
+            class="bg-red-500 lg:w-48 md:w-32 md:text-base text-sm md:font-bold w-24 h-12 shadow-lg rounded-md text-white"
             @click="deleteBook"
           >
             Hapus
           </button>
           <button
-            class="bg-green-dark w-48 text-base font-bold h-12 shadow-lg rounded-md text-white"
+            class="bg-green-dark lg:w-48 md:w-32 md:text-base md:font-bold w-24 text-sm h-12 shadow-lg rounded-md text-white"
             @click="click"
           >
             Edit
