@@ -88,7 +88,7 @@
         </div>
         <!-- Akhir tambah user -->
         <!-- Edit User -->
-        <div v-if="isEdit" class="mt-2 flex justify-center items-center">
+        <div v-if="isEdit" class="mt-2 w-full flex justify-center items-center">
           <form
             method="post"
             class="bg-white shadow-xl md:w-1/3 w-full md:pt-4 p-3 rounded-lg"
